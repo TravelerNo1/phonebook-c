@@ -98,7 +98,7 @@ C言語を用いて携帯電話のアドレス帳をシミュレートする。
 
 ## コンパイルと実行方法
 
-### Linux / macOS
+### Windows
 ```bash
-gcc main.c -o contact
-./contact
+gcc phonebook.c -o phonebook.exe
+phonebook.exe
