@@ -196,7 +196,7 @@ void load_contact(contact *c) {
             printf("メモリ割り当てに失敗しました！\n");
             return;
         }
-        for (int i = 0; i < n; i++) { // 遍历每个人员信息
+        int i;for ( i = 0; i < n; i++) { // 遍历每个人员信息
             person p; // 声明一个人员信息变量
             fscanf(fp, "%s %s %s %s %s %s\n", p.name, p.mobile, p.home, p.office, p.email, p.group); // 从文件中读取人员信息，以空格分隔各个字段，以换行符结束一条记录
             c->data[i] = p; // 将读取到的人员信息添加到通讯录中
@@ -216,7 +216,7 @@ void save_contact(contact *c) {
     }
     fprintf(fp, "%d\n", c->size); // 向文件中写入通讯录的人员数量
     if (c->size > 0) { // 如果人员数量大于0，向文件中写入通讯录的人员信息
-        for (int i = 0; i < c->size; i++) { // 遍历每个人员信息
+        int i;for ( i = 0; i < c->size; i++) { // 遍历每个人员信息
             person p = c->data[i]; // 获取对应的人员信息
             fprintf(fp, "%s %s %s %s %s %s\n", p.name, p.mobile, p.home, p.office, p.email, p.group); // 向文件中写入人员信息，以空格分隔各个字段，以换行符结束一条记录
         }
@@ -301,7 +301,7 @@ void view_person(contact *c) {if (is_empty(c)) { // 如果通讯录为空，提示用户并返
     int w=1;
     scanf("%s",q);
     clear_buffer();
-    for(int i=0; i<c->size; i++){
+    int i;for ( i = 0; i<c->size; i++){
     	if(!strcmp(c->data[i].group,q)){
     		if(w){
     			printf("名前%12s電話番号%12s自宅の電話番号%12sオフィス電話\n",e,e,e); // 打印表头
@@ -322,7 +322,7 @@ void call_person(contact *c) {
         return;
     }
     printf("電話をかけたい相手の名前を選択してください：\n"); // 提示用户选择要拔号的人员姓名
-    for (int i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，并打印出姓名和编号
+    int i;for ( i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，并打印出姓名和编号
         person p = c->data[i];
         printf("%d. %s\n", i + 1, p.name);
     }
@@ -343,7 +343,7 @@ void call_person(contact *c) {
         phone = p.office;
     }
     printf("ダイヤルして%s...\n", p.name); // 提示用户正在拔号
-    for (int i = 0; i < strlen(phone); i++) { // 遍历电话号码中的每个数字，并模拟打字机的效果显示出来
+	for ( i = 0; i < strlen(phone); i++) { // 遍历电话号码中的每个数字，并模拟打字机的效果显示出来
         printf("%c", phone[i]);
         fflush(stdout); // 刷新输出缓冲区，使得每个数字能立即显示出来
 
@@ -360,7 +360,7 @@ void modify_person(contact *c) {
         return;
     }
     printf("変更したい人物の名前を選択してください。\n"); // 提示用户选择要修改的人员姓名
-    for (int i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，并打印出姓名和编号
+    int i;for ( i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，并打印出姓名和编号
         person p = c->data[i];
         printf("%d. %s\n", i + 1, p.name);
     }
@@ -418,7 +418,7 @@ if (strlen(office) > 0) { // 如果新的办公电话不为空，更新人员信息中的办公电话
         printf("携帯電話番号、自宅電話番号、会社の電話番号は、すべて同時に空にすることはできません！\n");
         return;
     }
-    printf("修改成功！\n");
+    printf("変更に成功しました！\n");
 }
 
 // 删除某个人员记录
@@ -428,7 +428,7 @@ void delete_person(contact *c) {
         return;
     }
     printf("削除する人物の名前を選択してください：\n"); // 提示用户选择要删除的人员姓名
-    for (int i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，并打印出姓名和编号
+    int i;for ( i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，并打印出姓名和编号
         person p = c->data[i];
         printf("%d. %s\n", i + 1, p.name);
     }
@@ -439,7 +439,7 @@ void delete_person(contact *c) {
         printf("正しい数字を入力してください！\n");
         return;
     }
-    for (int i = index - 1; i < c->size - 1; i++) { // 从要删除的人员信息开始，将后续的人员信息依次向前移动一位，覆盖掉要删除的人员信息
+    for (i = index - 1; i < c->size - 1; i++) { // 从要删除的人员信息开始，将后续的人员信息依次向前移动一位，覆盖掉要删除的人员信息
         c->data[i] = c->data[i + 1];
     }
     c->size--; // 更新通讯录的人员数量
@@ -448,7 +448,7 @@ void delete_person(contact *c) {
 
 // 按姓名查找某个人员记录
 int search_by_name(contact *c, char *name) {
-    for (int i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，比较姓名是否匹配
+    int i;for ( i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，比较姓名是否匹配
         person p = c->data[i];
         if (strcmp(p.name, name) == 0) { // 如果姓名匹配，返回对应的索引
             return i;
@@ -459,7 +459,7 @@ int search_by_name(contact *c, char *name) {
 
 // 按电话号码查找某个人员记录
 int search_by_phone(contact *c, char *phone) {
-    for (int i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，比较电话号码是否匹配
+    int i;for ( i = 0; i < c->size; i++) { // 遍历通讯录中的每个人员信息，比较电话号码是否匹配
         person p = c->data[i];
         if (strcmp(p.mobile, phone) == 0 || strcmp(p.home, phone) == 0 || strcmp(p.office, phone) == 0) { // 如果手机号码、家庭电话号码、办公电话中有一个匹配，返回对应的索引
             return i;
