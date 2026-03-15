@@ -103,6 +103,6 @@ C言語を用いて携帯電話のアドレス帳をシミュレートする。
 gcc phonebook.c -o phonebook.exe
 phonebook.exe
 
-```bash
+
 gcc phonebook.c -o phonebook
 ./phonebook
