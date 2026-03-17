@@ -102,8 +102,7 @@ C言語を用いて携帯電話のアドレス帳をシミュレートする。
 ```bash
 gcc phonebook.c -o phonebook.exe
 phonebook.exe
-
-## コンパイルと実行方法
+```
 
 ### Linux / macOS
 ```bash
