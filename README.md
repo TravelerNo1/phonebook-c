@@ -115,11 +115,12 @@ gcc phonebook.c -o phonebook
 ```
 
 ## 実行例
-1. 新しい人事記録を追加する
-2. グループ別に人材を検索する
-3. 特定の人に電話をかける
-4. 個人の記録を修正する
-5. 個人の記録を削除する
-6. 個人の記録を検索する
-7. 連絡先データをファイルに保存する
-0. 終了システム
+Select an option:
+1. Add Contact
+2. View Contacts by Group
+3. Call Contact
+4. Modify Contact
+5. Delete Contact
+6. Search Contact
+7. Save Contacts
+0. Exit
